@@ -3,54 +3,175 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Megha Sharma | Business Analytics Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<title>Megha Sharma — Business Analytics Portfolio</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0a0f;--surface:#12121a;--surface2:#1a1a26;--border:#2a2a3a;--text:#e8e8f0;--muted:#8888a0;--accent:#6366f1;--accent2:#818cf8;--green:#34d399;--amber:#fbbf24;--coral:#fb7185;--teal:#2dd4bf}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
-header{padding:3rem 2rem 2rem;max-width:1200px;margin:0 auto;position:relative}
-header::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(99,102,241,.12)0%,transparent 70%);pointer-events:none}
-.header-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem}
-h1{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,#e8e8f0,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.subtitle{color:var(--muted);font-size:1rem;margin-top:.3rem}
-.links{display:flex;gap:.75rem;flex-wrap:wrap}
-.links a{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;border:1px solid var(--border);border-radius:2rem;color:var(--muted);text-decoration:none;font-size:.82rem;transition:all .25s}
-.links a:hover{border-color:var(--accent);color:var(--accent2);background:rgba(99,102,241,.06)}
-.grid{max-width:1200px;margin:0 auto;padding:1rem 2rem 3rem;display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:1rem;padding:1.5rem;overflow:hidden;transition:border-color .3s,transform .3s}
-.card:hover{border-color:rgba(99,102,241,.3);transform:translateY(-2px)}
-.card-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:.75rem}
-.span-8{grid-column:span 8}.span-4{grid-column:span 4}.span-6{grid-column:span 6}.span-3{grid-column:span 3}.span-12{grid-column:span 12}
-.metric{text-align:center}.metric .num{font-size:2.2rem;font-weight:700;font-family:'Playfair Display',serif}.metric .label{font-size:.75rem;color:var(--muted);margin-top:.2rem}
-.metric.accent .num{color:var(--accent2)}.metric.green .num{color:var(--green)}.metric.amber .num{color:var(--amber)}.metric.coral .num{color:var(--coral)}
-.module-bar{display:flex;align-items:center;gap:.75rem;margin-bottom:.6rem}.module-bar .name{font-size:.82rem;width:180px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.module-bar .bar-bg{flex:1;height:8px;background:var(--surface2);border-radius:4px;overflow:hidden}.module-bar .bar-fill{height:100%;border-radius:4px}.module-bar .score{font-size:.82rem;font-weight:600;width:36px;text-align:right}
-.skill-tags{display:flex;flex-wrap:wrap;gap:.4rem}.skill-tag{padding:.35rem .75rem;border-radius:2rem;font-size:.75rem;border:1px solid var(--border);color:var(--muted);transition:all .3s;cursor:default}.skill-tag:hover{border-color:var(--accent);color:var(--accent2);background:rgba(99,102,241,.08)}.skill-tag.hl{border-color:var(--accent);color:var(--accent2);background:rgba(99,102,241,.1)}
-.project{padding:1.25rem;border:1px solid var(--border);border-radius:.75rem;transition:all .3s;position:relative}.project:hover{border-color:var(--accent);background:rgba(99,102,241,.03)}.project h4{font-size:.95rem;margin-bottom:.3rem}.project p{font-size:.8rem;color:var(--muted);line-height:1.5}.project .tech{display:flex;gap:.3rem;margin-top:.6rem;flex-wrap:wrap}.project .tech span{font-size:.65rem;padding:.2rem .5rem;border-radius:1rem;background:var(--surface2);color:var(--muted)}
-.project-link{position:absolute;top:1.25rem;right:1.25rem;color:var(--muted);text-decoration:none;font-size:.75rem;padding:.3rem .6rem;border:1px solid var(--border);border-radius:.4rem;transition:all .2s}.project-link:hover{color:var(--accent2);border-color:var(--accent)}
-.timeline-item{display:flex;gap:1rem;margin-bottom:1.2rem}.timeline-item:last-child{margin-bottom:0}.timeline-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:.35rem;flex-shrink:0}.timeline-content h4{font-size:.88rem}.timeline-content p{font-size:.78rem;color:var(--muted)}
-.cert{display:flex;align-items:center;gap:.75rem;padding:.6rem 0;border-bottom:1px solid var(--border)}.cert:last-child{border-bottom:none}.cert-icon{width:32px;height:32px;border-radius:.5rem;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0}.cert-info h5{font-size:.82rem;font-weight:500}.cert-info p{font-size:.7rem;color:var(--muted)}
-.radar-wrap{position:relative;height:280px}.radar-wrap canvas{position:absolute;inset:0}
-footer{text-align:center;padding:2rem;color:var(--muted);font-size:.75rem;border-top:1px solid var(--border);max-width:1200px;margin:0 auto}
-@media(max-width:768px){.grid{grid-template-columns:1fr}.span-8,.span-4,.span-6,.span-3,.span-12{grid-column:span 1}h1{font-size:2rem}header{padding:2rem 1rem}.grid{padding:1rem}}
-</style></head><body>
-<header><div class="header-top"><div><h1>Megha Sharma</h1><p class="subtitle">Business Analyst &bull; Data Science &bull; AI Integration</p></div><div class="links"><a href="https://github.com/megghasharma" target="_blank">&#9679; GitHub</a><a href="https://linkedin.com/in/megha-sharma-6a47861a9" target="_blank">&#9679; LinkedIn</a><a href="mailto:megghamsharma@gmail.com">&#9679; Email</a></div></div></header>
-<div class="grid">
-<div class="card span-3 metric accent"><div class="card-label">Degree</div><div class="num">Distinction</div><div class="label">MSc Business Analytics</div></div>
-<div class="card span-3 metric green"><div class="card-label">Overall Average</div><div class="num">70.25%</div><div class="label">Swansea University</div></div>
-<div class="card span-3 metric amber"><div class="card-label">Best Module</div><div class="num">95%</div><div class="label">Financial Resources</div></div>
-<div class="card span-3 metric coral"><div class="card-label">ML Best AUC</div><div class="num">0.816</div><div class="label">Churn Prediction Model</div></div>
-<div class="card span-8"><div class="card-label">Academic Performance</div><div id="modules"></div></div>
-<div class="card span-4"><div class="card-label">Skills Radar</div><div class="radar-wrap"><canvas id="radarChart"></canvas></div></div>
-<div class="card span-12"><div class="card-label">Featured GitHub Projects</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:.75rem"><div class="project"><a class="project-link" href="https://github.com/megghasharma/churn-predictor-ai" target="_blank">View &rarr;</a><h4>&#128302; AI-Powered Churn Predictor</h4><p>ML pipeline predicting customer churn (ROC-AUC 0.816) with Claude AI generating personalised retention strategies. 4-page Streamlit dashboard.</p><div class="tech"><span>Python</span><span>scikit-learn</span><span>Streamlit</span><span>Claude API</span><span>Plotly</span></div></div><div class="project"><a class="project-link" href="https://github.com/megghasharma/credit-risk-ai" target="_blank">View &rarr;</a><h4>&#127974; AI Credit Risk Engine</h4><p>ML credit scoring with AI-generated FCA-compliant decision reports. Portfolio dashboard with live scoring.</p><div class="tech"><span>Python</span><span>scikit-learn</span><span>Streamlit</span><span>Claude API</span><span>Plotly</span></div></div><div class="project"><a class="project-link" href="https://github.com/megghasharma/business-insights-agent" target="_blank">View &rarr;</a><h4>&#129302; Business Insights Agent</h4><p>AI agent answering business questions in plain English using Claude tool-use. Analyses any CSV dataset.</p><div class="tech"><span>Python</span><span>Claude Tool Use</span><span>Pandas</span><span>MCP</span></div></div></div></div>
-<div class="card span-6"><div class="card-label">Professional Experience</div><div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>Financial Manager / Business Analyst</h4><p>Fair Choice Cash and Carry Ltd - Jun 2025 to Mar 2026</p><p style="margin-top:.3rem;color:var(--text);font-size:.78rem">Managed GBP 5M+ budgets, built Power BI dashboards, cut expenses by 12%, lifted profit margins by 15%</p></div></div><div class="timeline-item"><div class="timeline-dot" style="background:var(--teal)"></div><div class="timeline-content"><h4>Credit Risk Analyst (Freelancer)</h4><p>Euro Exim Bank - Jul 2025 to Dec 2025</p><p style="margin-top:.3rem;color:var(--text);font-size:.78rem">Monitored GBP 25M+ loan portfolio, reduced high-risk accounts by 18%, cut review time by 20%</p></div></div><div class="timeline-item"><div class="timeline-dot" style="background:var(--amber)"></div><div class="timeline-content"><h4>Subject Representative</h4><p>Swansea University - 2025</p><p style="margin-top:.3rem;color:var(--text);font-size:.78rem">Represented 120+ postgraduate students, increased engagement by 25%</p></div></div></div>
-<div class="card span-6"><div class="card-label">Certifications - Anthropic</div><div class="cert"><div class="cert-icon">&#9889;</div><div class="cert-info"><h5>AI Fluency: Framework and Foundations</h5><p>Anthropic</p></div></div><div class="cert"><div class="cert-icon">&#129302;</div><div class="cert-info"><h5>Introduction to Agent Skills</h5><p>Anthropic</p></div></div><div class="cert"><div class="cert-icon">&#128187;</div><div class="cert-info"><h5>Claude Code in Action</h5><p>Anthropic - Mar 2026</p></div></div><div class="cert"><div class="cert-icon">&#128279;</div><div class="cert-info"><h5>MCP: Advanced Topics</h5><p>Anthropic - Mar 2026</p></div></div><div class="cert"><div class="cert-icon">&#128218;</div><div class="cert-info"><h5>Claude 101</h5><p>Anthropic</p></div></div><div class="cert"><div class="cert-icon">&#128640;</div><div class="cert-info"><h5>Claude with the Anthropic API</h5><p>Anthropic - Mar 2026</p></div></div></div>
-<div class="card span-12"><div class="card-label">Technical Skills</div><div class="skill-tags"><span class="skill-tag hl">Python</span><span class="skill-tag hl">SQL</span><span class="skill-tag hl">R</span><span class="skill-tag">C++</span><span class="skill-tag">MATLAB</span><span class="skill-tag hl">Power BI</span><span class="skill-tag hl">Tableau</span><span class="skill-tag hl">Advanced Excel</span><span class="skill-tag">SPSS</span><span class="skill-tag">Weka</span><span class="skill-tag">SAGE</span><span class="skill-tag hl">Claude AI</span><span class="skill-tag hl">Anthropic API</span><span class="skill-tag hl">MCP</span><span class="skill-tag">Prompt Engineering</span><span class="skill-tag hl">scikit-learn</span><span class="skill-tag hl">Streamlit</span><span class="skill-tag">Plotly</span><span class="skill-tag hl">Financial Modelling</span><span class="skill-tag">Predictive Analysis</span><span class="skill-tag">Data Mining</span><span class="skill-tag">Sensitivity Analysis</span><span class="skill-tag">Requirements Gathering</span><span class="skill-tag">Business Process Mapping</span><span class="skill-tag">Agile / Scrum</span><span class="skill-tag">UAT</span><span class="skill-tag">Stakeholder Analysis</span></div></div>
+  :root {
+    --bg:#08090e;--bg2:#0e1018;--bg3:#141620;--border:#1e2235;--text:#e6e8f0;--text2:#9298b4;--text3:#5a6080;
+    --cyan:#00d4ff;--cyan-dim:rgba(0,212,255,0.1);--violet:#7c3aed;--violet-dim:rgba(124,58,237,0.1);
+    --rose:#f43f5e;--rose-dim:rgba(244,63,94,0.1);--emerald:#10b981;--emerald-dim:rgba(16,185,129,0.1);
+    --amber:#f59e0b;--amber-dim:rgba(245,158,11,0.1);--grad:linear-gradient(135deg,#00d4ff,#7c3aed);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+  .bg-mesh{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 600px 400px at 20% 10%,rgba(0,212,255,0.06),transparent),radial-gradient(ellipse 500px 500px at 80% 80%,rgba(124,58,237,0.05),transparent);}
+  .grid-lines{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.03;background-image:linear-gradient(rgba(255,255,255,0.2) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.2) 1px,transparent 1px);background-size:80px 80px;}
+  .site{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:40px 24px 60px;}
+  .hero{text-align:center;padding:60px 20px 50px;margin-bottom:48px;animation:fadeUp 0.8s ease-out;}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cyan-dim);color:var(--cyan);padding:6px 16px;border-radius:24px;font-size:12px;font-weight:600;border:1px solid rgba(0,212,255,0.15);margin-bottom:20px;letter-spacing:0.5px;}
+  .hero-badge .dot{width:7px;height:7px;background:var(--cyan);border-radius:50%;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .hero h1{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-1.5px;line-height:1.15;margin-bottom:16px;}
+  .hero h1 .grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hero p{font-size:17px;color:var(--text2);max-width:640px;margin:0 auto 24px;line-height:1.7;}
+  .hero-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .hero-links a{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:10px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.3s;}
+  .hero-links .primary{background:var(--grad);color:#000;}
+  .hero-links .primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,212,255,0.3);}
+  .hero-links .secondary{background:var(--bg3);color:var(--text2);border:1px solid var(--border);}
+  .hero-links .secondary:hover{border-color:var(--cyan);color:var(--cyan);}
+  .section{margin-bottom:48px;animation:fadeUp 0.6s ease-out;}
+  .section-title{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--cyan);font-weight:600;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+  .section-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(0,212,255,0.3),transparent);}
+  .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:36px;}
+  .stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;transition:all 0.3s;position:relative;overflow:hidden;}
+  .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);opacity:0;transition:opacity 0.3s;}
+  .stat-card:hover{border-color:rgba(0,212,255,0.3);transform:translateY(-3px);}
+  .stat-card:hover::before{opacity:1;}
+  .stat-val{font-size:32px;font-weight:800;font-family:'JetBrains Mono';margin-bottom:4px;}
+  .stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;}
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;}
+  .project-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:24px;transition:all 0.3s;position:relative;overflow:hidden;}
+  .project-card:hover{border-color:rgba(124,58,237,0.4);transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,0.3);}
+  .project-card .p-icon{font-size:28px;margin-bottom:12px;}
+  .project-card h3{font-size:16px;font-weight:700;margin-bottom:8px;}
+  .project-card p{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:14px;}
+  .project-tech{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+  .project-tech span{padding:3px 10px;border-radius:6px;font-size:10px;font-weight:600;background:var(--violet-dim);color:var(--violet);border:1px solid rgba(124,58,237,0.15);}
+  .project-links{display:flex;gap:10px;}
+  .project-links a{padding:7px 14px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+  .project-links .demo{background:var(--cyan-dim);color:var(--cyan);border:1px solid rgba(0,212,255,0.2);}
+  .project-links .demo:hover{background:rgba(0,212,255,0.2);}
+  .project-links .code{background:var(--bg3);color:var(--text2);border:1px solid var(--border);}
+  .project-links .code:hover{border-color:var(--text2);}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+  .skill-group{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px;}
+  .skill-group h4{font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .skill-tags span{padding:5px 12px;border-radius:8px;font-size:12px;font-weight:500;background:rgba(255,255,255,0.03);border:1px solid var(--border);color:var(--text2);transition:all 0.2s;}
+  .skill-tags span:hover{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-dim);}
+  .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;}
+  .cert-item{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;transition:all 0.2s;}
+  .cert-item:hover{border-color:rgba(0,212,255,0.3);}
+  .charts-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:36px;}
+  .chart-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:22px;}
+  .chart-card h3{font-size:14px;font-weight:600;margin-bottom:4px;}
+  .chart-card .sub{font-size:11px;color:var(--text3);margin-bottom:16px;}
+  .chart-wrap{position:relative;width:100%;height:240px;}
+  .chart-wrap canvas{position:absolute;top:0;left:0;width:100%!important;height:100%!important;}
+  .footer{text-align:center;padding:30px 20px;border-top:1px solid var(--border);margin-top:40px;}
+  .footer p{font-size:13px;color:var(--text3);}
+  .footer a{color:var(--cyan);text-decoration:none;}
+  .footer .social-links{display:flex;gap:14px;justify-content:center;margin-top:14px;}
+  .footer .social-links a{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;font-size:12px;color:var(--text2);font-weight:500;transition:all 0.2s;}
+  .footer .social-links a:hover{border-color:var(--cyan);color:var(--cyan);}
+  @media(max-width:768px){.charts-row{grid-template-columns:1fr;}.projects-grid{grid-template-columns:1fr;}.hero h1{font-size:32px;}}
+</style>
+</head>
+<body>
+<div class="bg-mesh"></div>
+<div class="grid-lines"></div>
+<div class="site">
+  <div class="hero">
+    <div class="hero-badge"><span class="dot"></span> Open to Opportunities</div>
+    <h1>Hi, I'm <span class="grad">Megha Sharma</span></h1>
+    <p>Business Analyst with an MSc in Business Analytics (Distinction) from Swansea University. I build ML models, integrate AI for business insights, and turn data into decisions.</p>
+    <div class="hero-links">
+      <a href="https://github.com/megghasharma" target="_blank" class="primary">⚡ View GitHub</a>
+      <a href="https://www.linkedin.com/in/megghasharma" target="_blank" class="secondary">💼 LinkedIn</a>
+      <a href="mailto:megha199755@gmail.com" class="secondary">📧 Contact Me</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Impact Numbers</div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-val" style="color:var(--emerald)">15%</div><div class="stat-label">Profit Margin Improvement</div></div>
+      <div class="stat-card"><div class="stat-val" style="color:var(--cyan)">12%</div><div class="stat-label">Operational Cost Reduction</div></div>
+      <div class="stat-card"><div class="stat-val" style="color:var(--violet)">18%</div><div class="stat-label">High-Risk Account Reduction</div></div>
+      <div class="stat-card"><div class="stat-val" style="color:var(--amber)">20%</div><div class="stat-label">Faster Credit Reviews</div></div>
+      <div class="stat-card"><div class="stat-val" style="color:var(--rose)">0.816</div><div class="stat-label">Churn Model ROC-AUC</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Skills Radar & Project Metrics</div>
+    <div class="charts-row">
+      <div class="chart-card"><h3>Skills Radar</h3><div class="sub">Core competency mapping</div><div class="chart-wrap"><canvas id="radarChart"></canvas></div></div>
+      <div class="chart-card"><h3>Project Performance</h3><div class="sub">ML model accuracy across projects</div><div class="chart-wrap"><canvas id="barChart"></canvas></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Featured Projects</div>
+    <div class="projects-grid">
+      <div class="project-card"><div class="p-icon">🔮</div><h3>AI Churn Predictor</h3><p>ML pipeline (ROC-AUC 0.816) with Claude AI generating personalised retention strategies for a UK car rental company. Interactive 4-page dashboard.</p><div class="project-tech"><span>Python</span><span>scikit-learn</span><span>Claude API</span><span>Streamlit</span></div><div class="project-links"><a href="https://megghasharma.github.io/churn-predictor-ai/" target="_blank" class="demo">🌐 Live Demo</a><a href="https://github.com/megghasharma/churn-predictor-ai" target="_blank" class="code">⌨️ Code</a></div></div>
+      <div class="project-card"><div class="p-icon">🏦</div><h3>AI Credit Risk Engine</h3><p>ML credit scoring with Claude AI generating FCA-compliant decision reports. Identifies 85% of defaults in top risk decile. Interactive scoring dashboard.</p><div class="project-tech"><span>Python</span><span>scikit-learn</span><span>Claude API</span><span>Streamlit</span></div><div class="project-links"><a href="https://megghasharma.github.io/credit-risk-ai/" target="_blank" class="demo">🌐 Live Demo</a><a href="https://github.com/megghasharma/credit-risk-ai" target="_blank" class="code">⌨️ Code</a></div></div>
+      <div class="project-card"><div class="p-icon">🤖</div><h3>Business Insights Agent</h3><p>AI agent answering business questions in plain English using Claude tool-use. MCP-aligned architecture with autonomous data inspection and anomaly detection.</p><div class="project-tech"><span>Python</span><span>Claude API</span><span>Tool Use</span><span>Pandas</span></div><div class="project-links"><a href="https://megghasharma.github.io/business-insights-agent/" target="_blank" class="demo">🌐 Live Demo</a><a href="https://github.com/megghasharma/business-insights-agent" target="_blank" class="code">⌨️ Code</a></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Tech Stack</div>
+    <div class="skills-grid">
+      <div class="skill-group"><h4><span style="color:var(--cyan)">📊</span> Analytics</h4><div class="skill-tags"><span>Power BI</span><span>Tableau</span><span>Advanced Excel</span><span>SPSS</span></div></div>
+      <div class="skill-group"><h4><span style="color:var(--violet)">💻</span> Programming</h4><div class="skill-tags"><span>Python</span><span>SQL</span><span>R</span><span>C++</span><span>MATLAB</span></div></div>
+      <div class="skill-group"><h4><span style="color:var(--emerald)">🤖</span> ML & AI</h4><div class="skill-tags"><span>scikit-learn</span><span>Claude AI</span><span>Anthropic API</span><span>MCP</span><span>Streamlit</span><span>Plotly</span></div></div>
+      <div class="skill-group"><h4><span style="color:var(--amber)">📋</span> Business</h4><div class="skill-tags"><span>Requirements Gathering</span><span>Stakeholder Management</span><span>Agile</span><span>UAT</span><span>Financial Modelling</span></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Certifications</div>
+    <div class="cert-grid">
+      <div class="cert-item"><span>🏅</span><span>Claude AI Foundations</span></div>
+      <div class="cert-item"><span>🏅</span><span>MCP Advanced Topics</span></div>
+      <div class="cert-item"><span>🏅</span><span>Claude Code in Action</span></div>
+      <div class="cert-item"><span>🏅</span><span>AI Agent Skills</span></div>
+      <div class="cert-item"><span>🏅</span><span>AI Fluency (Anthropic)</span></div>
+      <div class="cert-item"><span>🏅</span><span>API Fundamentals</span></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Megha Sharma — MSc Management (Business Analytics) with Distinction, Swansea University</p>
+    <div class="social-links">
+      <a href="https://github.com/megghasharma" target="_blank">⚡ GitHub</a>
+      <a href="https://www.linkedin.com/in/megghasharma" target="_blank">💼 LinkedIn</a>
+      <a href="mailto:megha199755@gmail.com">📧 Email</a>
+    </div>
+  </div>
 </div>
-<footer>2026 Megha Sharma - MSc Management (Business Analytics) with Distinction - Swansea University</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+
 <script>
-var m=[{n:'Managing Financial Resources',s:95,c:'#34d399'},{n:'Operations Management',s:80,c:'#818cf8'},{n:'Strategy',s:77,c:'#818cf8'},{n:'Marketing Management',s:72,c:'#818cf8'},{n:'Data Mining',s:71,c:'#818cf8'},{n:'Business Analytics',s:68,c:'#fbbf24'},{n:'Business Project',s:66,c:'#fbbf24'},{n:'Business Project Foundations',s:60,c:'#fb7185'},{n:'Human Resource Management',s:56,c:'#fb7185'}];
-var mc=document.getElementById('modules');m.forEach(function(x){var r=document.createElement('div');r.className='module-bar';r.innerHTML='<span class="name">'+x.n+'<\/span><div class="bar-bg"><div class="bar-fill" style="width:'+x.s+'%;background:'+x.c+'"><\/div><\/div><span class="score" style="color:'+x.c+'">'+x.s+'%<\/span>';mc.appendChild(r)});
-try{new Chart(document.getElementById('radarChart'),{type:'radar',data:{labels:['ML/AI','Data Viz','Finance','Programming','Analytics','Business'],datasets:[{data:[88,85,92,80,90,87],fill:true,backgroundColor:'rgba(99,102,241,.15)',borderColor:'#6366f1',pointBackgroundColor:'#6366f1',pointRadius:4}]},options:{responsive:true,maintainAspectRatio:false,scales:{r:{beginAtZero:true,max:100,ticks:{stepSize:20,color:'#555',backdropColor:'transparent',font:{size:9}},grid:{color:'rgba(255,255,255,.06)'},pointLabels:{color:'#8888a0',font:{size:11}}}},plugins:{legend:{display:false}}}})}catch(e){}
-</script></body></html>
+new Chart(document.getElementById('radarChart').getContext('2d'),{
+  type:'radar',
+  data:{
+    labels:['Machine Learning','Data Analysis','AI Integration','Business Strategy','Visualisation','SQL & Databases'],
+    datasets:[{label:'Competency',data:[85,90,88,82,87,80],borderColor:'#00d4ff',backgroundColor:'rgba(0,212,255,0.1)',borderWidth:2,pointBackgroundColor:'#00d4ff',pointRadius:4}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,scales:{r:{angleLines:{color:'rgba(42,42,58,0.5)'},grid:{color:'rgba(42,42,58,0.5)'},pointLabels:{color:'#9298b4',font:{family:'Sora',size:11}},ticks:{display:false},suggestedMin:0,suggestedMax:100}},plugins:{legend:{display:false}}}
+});
+new Chart(document.getElementById('barChart').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['Churn Predictor\nROC-AUC','Credit Risk\nROC-AUC','Credit Risk\nCapture Rate','Churn Predictor\nCV Score'],
+    datasets:[{label:'Score',data:[0.816,0.787,0.85,0.816],backgroundColor:['#00d4ff','#7c3aed','#10b981','#f59e0b'],borderRadius:8,barThickness:36}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#5a6080',font:{family:'Sora',size:10},maxRotation:0}},y:{grid:{color:'rgba(42,42,58,0.5)'},ticks:{color:'#5a6080',font:{family:'Sora'}},min:0,max:1}}}
+});
+</script>
+</body>
+</html>
